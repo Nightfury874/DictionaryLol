@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Quick Dictionary",
     "version": "1.1",
-    "description": "An easy-to-use Edge extension that allows users to quickly check word definitions without leaving the current webpage. Inspired by the built-in macOS dictionary, this tool provides seamless access to word meanings for a smooth browsing experience.",
+    "description": "Quickly check word definitions with pronunciation directly on the webpage; inspired by the built-in macOS dictionary",
     "permissions": [
       "contextMenus",
       "activeTab",
