@@ -2,7 +2,7 @@
 
 **Check word meanings instantly without leaving your page. Inspired by Mac's inbuilt dictionary**
 
-🔗 [**Explore EdgeBookmark**](https://nightfury874.github.io/DictionaryLol/)
+🔗 [**Explore the Edge extension**](https://nightfury874.github.io/DictionaryLol/)
 
 > ⚡ _Coming soon to Chrome!_
 
