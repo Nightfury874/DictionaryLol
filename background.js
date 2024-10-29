@@ -1,7 +1,9 @@
 // background.js
 
-// Replace this with your actual Google Apps Script Web App URL
 const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyeWNbxX-_0wwY3eOplEgZe4g9Jem7nI7PrMwoTKrptb1M_s3DKi7BlaFSKe9I_p59xnw/exec';
+
+// Set to keep track of tabs where scripts have been injected
+const injectedTabs = new Set();
 
 // Listener for when the extension is installed or updated
 chrome.runtime.onInstalled.addListener(function() {
@@ -16,21 +18,55 @@ chrome.runtime.onInstalled.addListener(function() {
 chrome.contextMenus.onClicked.addListener(function(info, tab) {
     if (info.menuItemId === "defineWord") {
         var selectedText = info.selectionText.trim();
-        if (selectedText.length > 0) {
-            // Inject content script and send the selected word
-            chrome.scripting.executeScript(
-                {
-                    target: { tabId: tab.id },
-                    files: ["contentScript.js"]
-                },
-                function() {
-                    chrome.tabs.sendMessage(tab.id, { action: "define", word: selectedText });
-                }
-            );
-            
+        if (selectedText.length > 0 && tab.id !== undefined) {
+            // Check if scripts have already been injected into this tab
+            if (!injectedTabs.has(tab.id)) {
+                // Inject styles.css first
+                chrome.scripting.insertCSS(
+                    {
+                        target: { tabId: tab.id },
+                        files: ["styles.css"]
+                    },
+                    function() {
+                        if (chrome.runtime.lastError) {
+                            console.error('Error injecting CSS:', chrome.runtime.lastError);
+                        } else {
+                            console.log('CSS injected successfully.');
+                        }
+
+                        // Inject contentScript.js after CSS
+                        chrome.scripting.executeScript(
+                            {
+                                target: { tabId: tab.id },
+                                files: ["contentScript.js"]
+                            },
+                            function() {
+                                if (chrome.runtime.lastError) {
+                                    console.error('Error injecting content script:', chrome.runtime.lastError);
+                                } else {
+                                    console.log('Content script injected successfully.');
+                                    injectedTabs.add(tab.id);
+                                    chrome.tabs.sendMessage(tab.id, { action: "define", word: selectedText });
+                                }
+                            }
+                        );
+                    }
+                );
+            } else {
+                // If already injected, just send the message
+                chrome.tabs.sendMessage(tab.id, { action: "define", word: selectedText });
+            }
+
             // Increment the lookup count
             incrementLookupCount();
         }
+    }
+});
+
+// Listener for tab removal to clean up the injectedTabs set
+chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
+    if (injectedTabs.has(tabId)) {
+        injectedTabs.delete(tabId);
     }
 });
 
