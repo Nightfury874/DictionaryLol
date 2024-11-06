@@ -51,12 +51,12 @@
         .action-buttons {
             margin-top: 2rem;
             display: flex;
-            justify-content: center;
+            flex-direction: column; /* Stack buttons vertically */
+            align-items: center;
             gap: 1rem;
-            flex-wrap: wrap;
         }
 
-        .action-buttons a, .action-buttons button {
+        .marketplace-btn {
             text-decoration: none;
             padding: 0.75rem 1.5rem;
             border: none;
@@ -64,40 +64,28 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .marketplace-btn {
             background-color: #0078D7;
             color: #fff;
+            display: inline-block;
+            width: 250px; /* Fixed width for consistency */
+            text-align: center;
         }
 
         .marketplace-btn:hover {
             background-color: #005a9e;
         }
 
-        .coffee-btn {
-            background-color: #FF813F;
-            color: #fff;
+        .buymeacoffee-btn img {
+            height: 60px;
+            width: 217px;
+            border: none;
         }
 
-        .coffee-btn:hover {
-            background-color: #e6762c;
+        .product-hunt-badge img {
+            width: 250px;
+            height: 54px;
+            border: none;
         }
-
-        /* If you prefer using a button for Product Hunt */
-        .product-hunt-btn {
-            background-color: #DA552F;
-            color: #fff;
-        }
-
-        .product-hunt-btn:hover {
-            background-color: #b04024;
-        }
-
-        /* Alternatively, if you prefer the Product Hunt badge image, you can remove the above button styles */
 
         /* Issue Tracker Styles */
         #issue-tracker {
@@ -179,9 +167,16 @@
                 flex-direction: column;
             }
 
-            .action-buttons a, .action-buttons button {
+            .marketplace-btn {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .buymeacoffee-btn img,
+            .product-hunt-badge img {
+                width: 100%;
+                max-width: 300px;
+                height: auto;
             }
 
             #issue-tracker h2 {
@@ -202,26 +197,20 @@
         </header>
 
         <div class="action-buttons">
+            <!-- Get it on Edge Button -->
             <a href="https://microsoftedge.microsoft.com/addons/detail/quick-dictionary/bobdhganjfoipmbbicapblfeonjleggp" class="marketplace-btn" target="_blank">Get it on Edge</a>
 
-            <a href="https://www.buymeacoffee.com/niharbasisth" class="coffee-btn" target="_blank">Buy Me a Coffee</a>
-
-            <!-- Choose one of the following options based on your preference -->
-
-            <!-- Option 1: Product Hunt as a Button -->
-<!--             <a href="https://www.producthunt.com/posts/quickdictionary?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-quickdictionary" class="product-hunt-btn" target="_blank">Visit on Product Hunt</a> -->
-
-            <!-- Option 2: Product Hunt Badge Image -->
-                        <a href="https://www.producthunt.com/posts/quickdictionary?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-quickdictionary" target="_blank">
-                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=582651&theme=dark" alt="QuickDictionary - Your&#0032;in&#0045;page&#0032;dictionary | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+            <!-- Buy Me a Coffee Button as Image -->
+            <a href="https://www.buymeacoffee.com/niharbasisth" class="buymeacoffee-btn" target="_blank">
+                <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee">
             </a>
-           
+
+            <!-- Product Hunt Badge as Image -->
+            <a href="https://www.producthunt.com/posts/quickdictionary?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-quickdictionary" target="_blank" class="product-hunt-badge">
+                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=582651&theme=dark" alt="QuickDictionary - Your in-page dictionary | Product Hunt">
+            </a>
         </div>
 
-        <!-- If you chose to use the Product Hunt badge image, ensure you uncomment the above block and remove the button link -->
-
-        <!-- Issue Tracker Section -->
-    
     </div>
 
     <footer>
@@ -229,8 +218,9 @@
         Made with ❤️ by NightFury.<br>
         <div class="visit-counter">
             <!-- Visit Counter Embed Code -->
-             <a href='https://www.free-counters.org/'>free HitCounters</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=c11adda99ab903e7a4627a2913857a434070af8e'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1258456/t/1"></script>
+            <a href='https://www.free-counters.org/'>Visits</a>
+            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=c11adda99ab903e7a4627a2913857a434070af8e'></script>
+            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1258456/t/1"></script>
         </div>
     </footer>
 </body>
