@@ -28,6 +28,7 @@
             margin: 0 auto;
             padding: 2rem;
             text-align: center;
+            position: relative; /* For GitHub corner positioning */
         }
 
         header {
@@ -47,14 +48,7 @@
             margin: 0 auto;
         }
 
-        .buttons {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .buyMeACoffee {
+        .action-buttons {
             margin-top: 2rem;
             display: flex;
             justify-content: center;
@@ -62,7 +56,7 @@
             flex-wrap: wrap;
         }
 
-        .buttons a, .buttons button {
+        .action-buttons a, .action-buttons button {
             text-decoration: none;
             padding: 0.75rem 1.5rem;
             border: none;
@@ -70,6 +64,9 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .marketplace-btn {
@@ -89,6 +86,18 @@
         .coffee-btn:hover {
             background-color: #e6762c;
         }
+
+        /* If you prefer using a button for Product Hunt */
+        .product-hunt-btn {
+            background-color: #DA552F;
+            color: #fff;
+        }
+
+        .product-hunt-btn:hover {
+            background-color: #b04024;
+        }
+
+        /* Alternatively, if you prefer the Product Hunt badge image, you can remove the above button styles */
 
         /* Issue Tracker Styles */
         #issue-tracker {
@@ -141,11 +150,19 @@
             color: #777;
             text-align: center;
         }
-         /* GitHub icon */
+
+        /* GitHub icon */
         .github-corner {
             position: absolute;
             top: 0;
             right: 0;
+        }
+
+        /* Visit Counter Styles */
+        .visit-counter {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #555;
         }
 
         /* Responsive Design */
@@ -158,11 +175,11 @@
                 font-size: 1rem;
             }
 
-            .buttons {
+            .action-buttons {
                 flex-direction: column;
             }
 
-            .buttons a, .buttons button {
+            .action-buttons a, .action-buttons button {
                 width: 100%;
                 max-width: 300px;
             }
@@ -179,26 +196,44 @@
             <h1>QuickDictionary</h1>
             <p>Check word meanings instantly without leaving your page. Inspired by Mac's inbuilt dictionary, now available as an Edge extension. No login, no signup, sidhi baat no bakwas. Enjoy!!!</p>
 
-             <a href="https://github.com/Nightfury874/DictionaryLol" class="github-corner" aria-label="View source on GitHub">
-                <img src="https://img.icons8.com/?size=50&id=12599&format=png&color=000000">
+            <a href="https://github.com/Nightfury874/DictionaryLol" class="github-corner" aria-label="View source on GitHub">
+                <img src="https://img.icons8.com/?size=50&id=12599&format=png&color=000000" alt="GitHub Corner">
             </a>
         </header>
 
-        <div class="buttons">
+        <div class="action-buttons">
             <a href="https://microsoftedge.microsoft.com/addons/detail/quick-dictionary/bobdhganjfoipmbbicapblfeonjleggp" class="marketplace-btn" target="_blank">Get it on Edge</a>
 
+            <a href="https://www.buymeacoffee.com/niharbasisth" class="coffee-btn" target="_blank">Buy Me a Coffee</a>
+
+            <!-- Choose one of the following options based on your preference -->
+
+            <!-- Option 1: Product Hunt as a Button -->
+            <a href="https://www.producthunt.com/posts/quickdictionary?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-quickdictionary" class="product-hunt-btn" target="_blank">Visit on Product Hunt</a>
+
+            <!-- Option 2: Product Hunt Badge Image -->
+            <!--
+            <a href="https://www.producthunt.com/posts/quickdictionary?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-quickdictionary" target="_blank">
+                <img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=582651&theme=dark" alt="QuickDictionary - Your&#0032;in&#0045;page&#0032;dictionary | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" />
+            </a>
+            -->
         </div>
-        <div class="buyMeACoffee">
-            <a href="https://www.buymeacoffee.com/niharbasisth" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
-        </div>
+
+        <!-- If you chose to use the Product Hunt badge image, ensure you uncomment the above block and remove the button link -->
 
         <!-- Issue Tracker Section -->
-        <a href="https://www.producthunt.com/posts/quickdictionary?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-quickdictionary" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=582651&theme=dark" alt="QuickDictionary - Your&#0032;in&#0045;page&#0032;dictionary | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+    
     </div>
 
-   <footer>
+    <footer>
         &copy; 2024 Nihar Jyoti Basisth. All rights reserved.<br>
         Made with ❤️ by NightFury.<br>
+        <div class="visit-counter">
+            <!-- Visit Counter Embed Code -->
+            <a href='https://www.free-counters.org/'>free HitCounters</a>
+            <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=c11adda99ab903e7a4627a2913857a434070af8e'></script>
+            <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1258456/t/1"></script>
+        </div>
     </footer>
 </body>
 </html>
