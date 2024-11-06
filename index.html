@@ -193,78 +193,12 @@
         </div>
 
         <!-- Issue Tracker Section -->
-        <section id="issue-tracker">
-            <h2>Open Issues</h2>
-            <ul class="issues-list" id="issues-list">
-                <!-- Issues will be dynamically inserted here -->
-            </ul>
-            <div class="loading" id="loading">Loading issues...</div>
-            <div class="error" id="error" style="display: none;">Unable to load issues. Please try again later.</div>
-        </section>
+        <a href="https://www.producthunt.com/posts/quickdictionary?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-quickdictionary" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=582651&theme=dark" alt="QuickDictionary - Your&#0032;in&#0045;page&#0032;dictionary | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
     </div>
 
    <footer>
         &copy; 2024 Nihar Jyoti Basisth. All rights reserved.<br>
         Made with ❤️ by NightFury.<br>
-        Licensed under the MIT License
     </footer>
-
-    <script>
-        // Configuration: Set your GitHub repository details here
-        const GITHUB_OWNER = 'Nightfury874';
-        const GITHUB_REPO = 'DictionaryLol';
-
-        // Elements
-        const issuesList = document.getElementById('issues-list');
-        const loading = document.getElementById('loading');
-        const error = document.getElementById('error');
-
-        // Fetch open issues from GitHub
-        async function fetchIssues() {
-            try {
-                const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/issues?state=open`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                const issues = await response.json();
-
-                // Clear loading message
-                loading.style.display = 'none';
-
-                if (issues.length === 0) {
-                    issuesList.innerHTML = '<li>No open issues. Great job!</li>';
-                    return;
-                }
-
-                // Populate issues
-                issues.forEach(issue => {
-                    // Exclude pull requests
-                    if (issue.pull_request) return;
-
-                    const listItem = document.createElement('li');
-                    listItem.classList.add('issue-item');
-
-                    const issueLink = document.createElement('a');
-                    issueLink.href = issue.html_url;
-                    issueLink.target = '_blank';
-                    issueLink.textContent = issue.title;
-
-                    const issueBody = document.createElement('p');
-                    issueBody.textContent = issue.body ? issue.body.substring(0, 100) + '...' : 'No description provided.';
-
-                    listItem.appendChild(issueLink);
-                    listItem.appendChild(issueBody);
-                    issuesList.appendChild(listItem);
-                });
-            } catch (error) {
-                console.error('Error fetching issues:', error);
-                loading.style.display = 'none';
-                error.style.display = 'block';
-            }
-        }
-
-        // Initialize
-        fetchIssues();
-    </script>
 </body>
 </html>
